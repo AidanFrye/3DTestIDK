@@ -7,16 +7,14 @@ using UnityEngine.UIElements;
 public class PlayerControl : NetworkBehaviour
 {
     public static CharacterController characterController;
+    public CameraDrag cameraDrag;
     public int speed = 5;
-    Vector3 lastMousePosition;
+
     Vector3 velocity;
-    public CinemachineOrbitalFollow cinemachineFollow;
-    public CinemachineCamera cinemachineCamera;
-    public bool xInverted;
-    public bool yInverted;
+
+
     private bool isGrounded;
     private float gravity = -9.81f;
-    public float sensitivity = 5;
     public State playerState;
     private float rotationalOffset = 12f;
 
@@ -24,18 +22,7 @@ public class PlayerControl : NetworkBehaviour
     {
         if (!IsOwner) return;
         characterController = GetComponent<CharacterController>();
-    }
-
-    public override void OnNetworkSpawn()
-    {
-        if (!IsOwner) 
-        {
-            enabled = false;
-            return;
-        }
-        cinemachineFollow = FindAnyObjectByType<CinemachineOrbitalFollow>();
-        cinemachineCamera = FindAnyObjectByType<CinemachineCamera>();
-        cinemachineCamera.Follow = this.transform;
+        cameraDrag = GetComponent<CameraDrag>();
         playerState = State.idle;
         transform.position = new Vector3(232f, 119f, 232f);
     }
@@ -56,8 +43,8 @@ public class PlayerControl : NetworkBehaviour
         float z = Input.GetAxis("Vertical");
 
 
-        Vector3 forward = cinemachineCamera.transform.forward;
-        Vector3 right = cinemachineCamera.transform.right;
+        Vector3 forward = cameraDrag.cinemachineCamera.transform.forward;
+        Vector3 right = cameraDrag.cinemachineCamera.transform.right;
         forward.y = 0f;
         right.y = 0f;
         forward.Normalize();
@@ -95,43 +82,5 @@ public class PlayerControl : NetworkBehaviour
             velocity.y = 8f;
 
         }
-
-        if (Input.GetMouseButton(1))
-        {
-            //UnityEngine.Cursor.lockState = CursorLockMode.Locked;
-            //UnityEngine.Cursor.visible = false;
-            float sensitivity = this.sensitivity / 10;
-            if (lastMousePosition != Input.mousePosition)
-            {
-                float xDifference = lastMousePosition.x - Input.mousePosition.x;
-                float yDifference = lastMousePosition.y - Input.mousePosition.y;
-
-                if (xInverted)
-                {
-                    cinemachineFollow.HorizontalAxis.Value += 1f * xDifference * sensitivity;
-                }
-                else
-                {
-                    cinemachineFollow.HorizontalAxis.Value -= 1f * xDifference * sensitivity;
-                }
-
-                if (yInverted)
-                {
-                    cinemachineFollow.VerticalAxis.Value -= 1f * yDifference * sensitivity;
-                }
-                else
-                {
-                    cinemachineFollow.VerticalAxis.Value += 1f * yDifference * sensitivity;
-                }
-
-            }
-        }
-        else 
-        {
-            //UnityEngine.Cursor.lockState = CursorLockMode.None;
-            //UnityEngine.Cursor.visible = true;
-        }
-
-        lastMousePosition = Input.mousePosition;
     }
 }

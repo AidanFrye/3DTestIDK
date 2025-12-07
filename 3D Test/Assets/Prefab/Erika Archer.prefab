@@ -85,6 +85,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 82542c4540463344d982d8f803b54d54, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3299022931840976372}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 82542c4540463344d982d8f803b54d54, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1448772210252169401}
   m_SourcePrefab: {fileID: 100100000, guid: 82542c4540463344d982d8f803b54d54, type: 3}
 --- !u!1 &2434290145474351787 stripped
 GameObject:
@@ -132,7 +135,7 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.8129202
+  m_Height: 1.55
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -177,12 +180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
+  cameraDrag: {fileID: 0}
   speed: 5
-  cinemachineFollow: {fileID: 0}
-  cinemachineCamera: {fileID: 0}
-  xInverted: 0
-  yInverted: 0
-  sensitivity: 2
   playerState: 0
 --- !u!114 &1486255813423507755
 MonoBehaviour:
@@ -258,6 +257,24 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   TransitionStateInfoList: []
   m_Animator: {fileID: 8963194074089001579}
+--- !u!114 &1448772210252169401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2434290145474351787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63d2690000f41514f942aa01e80269be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  cinemachineFollow: {fileID: 0}
+  cinemachineCamera: {fileID: 0}
+  sensitivity: 2
+  xInverted: 0
+  yInverted: 0
 --- !u!95 &8963194074089001579 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 82542c4540463344d982d8f803b54d54, type: 3}

@@ -206,7 +206,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15212369, y: 0.00000004191495, z: -0.0000000064513412, w: 0.9883615}
+  m_LocalRotation: {x: 0.15212369, y: 0.000000041231193, z: -0.0000000020089317, w: 0.9883615}
   m_LocalPosition: {x: 232, y: 120.50353, z: 227.23141}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -592,7 +592,7 @@ GameObject:
   - component: {fileID: 1427110862}
   - component: {fileID: 1427110861}
   m_Layer: 0
-  m_Name: FreeLook Camera
+  m_Name: 3rdPersonCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
